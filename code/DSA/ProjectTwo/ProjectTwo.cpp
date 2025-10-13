@@ -9,6 +9,7 @@
 #include <string>
 #include <cctype>
 #include <algorithm>
+#include <iomanip>
 
 //=============================================================================================================
 //COURSE STRUCTURE
@@ -165,7 +166,11 @@ void BinarySearchTree::inOrder(Node* node) {
         inOrder(node->left);
         
         //Printing function for current node below, to include cycling through prerequisites
-        std::cout << "Course: " << node->course.name << " ID: " << node->course.courseId << " Prerequisite Courses: ";
+        std::cout << std::left 
+                  << std::setw(9) << node->course.courseId 
+                  << std::setw(3) << " | " 
+                  << std::setw(34) << node->course.name 
+                  << std::setw(3) << " | ";
         
         if (node->course.prereqs.size() == 0) {
             std::cout << "None" << std:: endl;
@@ -187,6 +192,9 @@ void BinarySearchTree::inOrder(Node* node) {
 
 //Used to print all courses
 void BinarySearchTree::printAll() {
+    std::cout << "COURSE ID | COURSE NAME                        | PREREQUISITE COURSES" << std::endl;
+    std::cout << std::setw(69) << std::setfill('=') << "" << std::endl << std::setfill(' ');
+
     inOrder(root);
 }
 
@@ -315,10 +323,11 @@ void parseFile(BinarySearchTree& bst, std::string fileName) {
 
             int stringTracker = 0;
             for (int i = 0; i < tempVal.size(); i++) {
-                if (tempVal.at(i) == ',') {
+                if (tempVal.at(i) == ',' || i == tempVal.size() - 1) {
                     std::cout << "319: Line size: " << tempVal.size() << std::endl;
                     std::cout << "320: Beginning of substring: " << stringTracker << std::endl;
                     std::cout << "321: End of substring: " << i << std::endl;
+                    
                     std::string subString = tempVal.substr(stringTracker, i - stringTracker);
 
 
@@ -327,7 +336,6 @@ void parseFile(BinarySearchTree& bst, std::string fileName) {
                             subString.erase(std::remove(subString.begin(), subString.end(), ','), subString.end());
                         }
                     }
-
                     
                     if(subString.size() > 0) {
                         tempVect.push_back(subString);
