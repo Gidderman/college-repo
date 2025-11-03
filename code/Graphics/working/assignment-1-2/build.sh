@@ -1,0 +1,1 @@
+g++ -I ./shapes -I ./util MainCode.cpp SceneManager.cpp ViewManager.cpp util/ShaderManager.cpp shapes/ShapeMeshes.cpp -lglfw -lGLU -ldl -lGLEW -lGL -o project
