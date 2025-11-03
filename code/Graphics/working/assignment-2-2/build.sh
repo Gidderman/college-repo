@@ -1,0 +1,1 @@
+g++ -Wall -Wextra -I ./util -I ./shapes MainCode.cpp SceneManager.cpp ViewManager.cpp shapes/ShapeMeshes.cpp util/ShaderManager.cpp -lglfw -lGLU -lGLEW -lGL -lX11 -lpthread -lXrandr -lXi -ldl -o project
