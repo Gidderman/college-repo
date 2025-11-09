@@ -184,7 +184,8 @@ void SceneManager::RenderScene()
 	ZrotationDegrees = 0.0f;
 
 	// set the XYZ position for the mesh
-	positionXYZ = glm::vec3(-2.0f, 0.0f, 0.0f);
+	//moved the triangle to the center of the screen - GC
+	positionXYZ = glm::vec3(0.0f, 0.0f, 0.0f);
 
 	// set the transformations into memory to be used on the drawn meshes
 	SetTransformations(
@@ -213,12 +214,14 @@ void SceneManager::RenderScene()
 	scaleXYZ = glm::vec3(1.0f, 1.0f, 1.0f);
 
 	// set the XYZ rotation for the mesh
-	XrotationDegrees = 0.0f;
+	//rotated the triangle by 180 degrees along the x axis - GC
+	XrotationDegrees = 180.0f;
 	YrotationDegrees = 0.0f;
 	ZrotationDegrees = 0.0f;
 
 	// set the XYZ position for the mesh
-	positionXYZ = glm::vec3(2.0f, 0.0f, 0.0f);
+	//moved the triangle up to equal the height of the other triangle - GC
+	positionXYZ = glm::vec3(0.0f, 1.0f, 0.0f);
 
 	// set the transformations into memory to be used on the drawn meshes
 	SetTransformations(
